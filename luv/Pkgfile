@@ -1,0 +1,16 @@
+# Description: bare libuv bindings for lua
+# URL: https://github.com/luvit/luv
+# Maintainer: adam, adamvonbaron at outlook dot com
+# Depends on: lua
+
+name=libluv
+version=1.36.0-0
+release=1
+source=(https://github.com/luvit/luv/archive/$version.tar.gz)
+
+build() {
+    cd msgpack-c-cpp-$version
+    cmake . -DCMAKE_INSTALL_PREFIX=/usr
+    make
+    make DESTDIR=$PKG install
+}
