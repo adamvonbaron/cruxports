@@ -1,0 +1,15 @@
+# Description: yet another wallpaper application
+# URL: https://github.com/himdel/hsetroot
+# Maintainer: adam, adamvonbaron at outlook dot com
+# Depends on:
+
+name=hsetroot
+version=1.0.5
+release=1
+source=(https://github.com/himdel/hsetroot/archive/$version.tar.gz)
+
+build() {
+    cd hsetroot-$version
+    make
+    PREFIX=/usr make install
+}
