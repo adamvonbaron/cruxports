@@ -1,6 +1,6 @@
 # Maintainer: adam, adamvonbaron at outlook dot com
 # Description: a cool browser for cool dudes
-# Url: https://www.google.com/chrome
+# URL: https://www.google.com/chrome
 # Depends on: alsa-lib gtk3 xorg-libxtst nss cups
 
 name=google-chrome
