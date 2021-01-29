@@ -11,5 +11,6 @@ source=(https://github.com/himdel/hsetroot/archive/$version.tar.gz)
 build() {
     cd hsetroot-$version
     make
-    PREFIX=/usr make install
+    install -Dm 755 hsetroot $PKG/usr/bin
+    install -Dm 755 hsr-outputs $PKG/usr/bin
 }
