@@ -1,7 +1,7 @@
 # Description: Vim but better? i guess...
 # URL: https://neovim.io
 # Maintainer: adam, adamvonbaron at outlook dot com
-# Depends on: ninja cmake unzip libuv msgpack lua libluv
+# Depends on: ninja cmake unzip libuv msgpack lua luajit libluv
 
 name=neovim
 version=0.4.4

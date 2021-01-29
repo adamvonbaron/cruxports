@@ -1,16 +1,16 @@
 # Description: bare libuv bindings for lua
 # URL: https://github.com/luvit/luv
 # Maintainer: adam, adamvonbaron at outlook dot com
-# Depends on: lua
+# Depends on: lua luajit git
 
 name=libluv
 version=1.36.0-0
 release=1
-source=(https://github.com/luvit/luv/archive/$version.tar.gz)
+source=(https://github.com/luvit/luv.git)
 
 build() {
-    cd msgpack-c-cpp-$version
-    cmake . -DCMAKE_INSTALL_PREFIX=/usr
-    make
-    make DESTDIR=$PKG install
+    git clone https://github.com/luvit/luv.git --recursive
+    cd luv
+    LUA_BUILD_TYPE=System make
+    install -Dm 755 build/luv.so $PKG/usr/lib/lua/5.1
 }
