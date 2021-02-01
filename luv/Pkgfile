@@ -12,5 +12,5 @@ build() {
     git clone https://github.com/luvit/luv.git --recursive
     cd luv
     LUA_BUILD_TYPE=System make
-    install -Dm 755 build/luv.so $PKG/usr/lib/lua/5.1
+    install -Dst $PKG/usr/lib build/luv.so 
 }
