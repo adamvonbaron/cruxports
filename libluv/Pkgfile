@@ -1,0 +1,17 @@
+# Description: bare libuv bindings for lua
+# URL: https://github.com/luvit/luv
+# Maintainer: adam, adamvonbaron at outlook dot com
+# Depends on: lua luajit git
+
+name=libluv
+version=1.36.0-0
+release=1
+source=(https://github.com/luvit/luv.git)
+
+build() {
+    git clone https://github.com/luvit/luv.git --recursive
+    cd luv
+    LUA_BUILD_TYPE=System make
+    mv build/luv.so build/libluv.so
+    install -Dst $PKG/usr/lib build/libluv.so 
+}
