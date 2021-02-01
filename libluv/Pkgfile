@@ -1,16 +1,25 @@
 # Description: bare libuv bindings for lua
 # URL: https://github.com/luvit/luv
 # Maintainer: adam, adamvonbaron at outlook dot com
-# Depends on: lua luajit git
+# Depends on: lua luajit git ninja
 
 name=libluv
 version=1.36.0-0
 release=1
-source=(https://github.com/luvit/luv.git)
+source=(https://github.com/luvit/luv/releases/download/$version/luv-$version.tar.gz)
 
 build() {
-    git clone https://github.com/luvit/luv.git --recursive
-    cd luv
-    LUA_BUILD_TYPE=System make
-    install -Dst $PKG/usr/lib build/luv.so 
+    # cd luv
+    # LUA_BUILD_TYPE=System make
+    # install -Dst $PKG/usr/lib build/luv.so
+    cd luv-$version
+    cmake -GNinja \
+        -DWITH_SHARED_LIBUV=ON \
+        -DLUA_BUILD_TYPE=System \
+        -DBUILD_MODULE=OFF \
+        -DBUILD_SHARED_LIBS=ON \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        .
+    ninja
+    DESTDIR=$PKG ninja install
 }
