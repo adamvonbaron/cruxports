@@ -1,0 +1,32 @@
+# Description: libmpack lua bindings
+# URL:         https://github.com/libmpack/libmpack-lua
+# Maintainer:  adam, adamvonbaron at outlook dot com
+# Depends on:  
+
+name=lua-mpack
+commit=b593809d93b5299bbee4e1d18e2e2d55f9fa53a6
+version=20201208
+release=1
+source=(https://github.com/libmpack/libmpack-lua/archive/${commit}.tar.gz)
+
+build() {
+	cd libmpack-lua-${commit}
+
+	make PREFIX=/usr
+
+	#lua5.1
+	gcc -O2 -fPIC -I/usr/include/lua5.1 -c binding/lua/lmpack.c -o lmpack.o
+	gcc -shared -o mpack.so.5.1 lmpack.o
+	install -Dm755 mpack.so.5.1 "$PKG/usr/lib/lua/5.1/mpack.so"
+
+	#lua5.2
+	gcc -O2 -fPIC -I/usr/include/lua5.2 -c binding/lua/lmpack.c -o lmpack.o
+	gcc -shared -o mpack.so.5.2 lmpack.o
+	install -Dm755 mpack.so.5.2 "$PKG/usr/lib/lua/5.2/mpack.so"
+
+
+	#lua
+	gcc -O2 -fPIC -I/usr/include -c binding/lua/lmpack.c -o lmpack.o
+	gcc -shared -o mpack.so.5.3 lmpack.o
+	install -Dm755 mpack.so.5.3 "$PKG/usr/lib/lua/5.3/mpack.so"
+}
