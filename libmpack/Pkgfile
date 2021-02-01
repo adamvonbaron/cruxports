@@ -1,0 +1,17 @@
+# Description: simple implementation of msgpack in c
+# URL:         https://github.com/libmpack/libmpack
+# Maintainer:  adam, adamvonbaron at outlook dot com
+# Depends on:  
+
+name=libmpack
+commit=22b1fd90285117c995728511f9525d29520a8c82
+version=20180827
+release=1
+source=(https://github.com/libmpack/$name/archive/${commit}.tar.gz)
+
+build() {
+	cd $name-${commit}
+
+	make PREFIX=/usr
+	make PREFIX=/usr DESTDIR=$PKG install
+}
