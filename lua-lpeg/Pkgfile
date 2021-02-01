@@ -13,4 +13,5 @@ build() {
 
 	make
 	install -Dst $PKG/usr/lib lpeg.so
+	install -Dst $PKG/usr/lib/lua/5.4 lpeg.so
 }
