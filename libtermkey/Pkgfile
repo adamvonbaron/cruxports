@@ -1,0 +1,15 @@
+# Description: 
+# URL:         https://github.com/neovim/libtermkey/
+# Depends on:
+
+name=libtermkey
+version=0.20
+release=1
+source=(https://github.com/neovim/$name/archive/v$version.tar.gz)
+
+build() {
+	cd $name-$version
+
+	make PREFIX=/usr
+	make PREFIX=/usr DESTDIR=$PKG install
+}
