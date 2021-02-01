@@ -14,4 +14,5 @@ build() {
 
 	make USE_SYSTEM_LUA=yes USE_SYSTEM_MPACK=yes
 	install -Dst $PKG/usr/lib mpack.so
+	install -Dst $PKG/usr/lib/lua/5.4 mpack.so
 }
