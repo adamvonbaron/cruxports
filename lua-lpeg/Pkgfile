@@ -1,7 +1,7 @@
 # Description: 
 # URL:         http://www.inf.puc-rio.br/~roberto/lpeg
 # Maintainer:  
-# Depends on:  lua51 lua52 lua
+# Depends on:  lua51 lua52 lua luajit
 
 name=lua-lpeg
 version=1.0.2
@@ -11,7 +11,7 @@ source=(http://www.inf.puc-rio.br/~roberto/${name:4:7}/${name:4:7}-$version.tar.
 build() {
 	cd ${name:4:7}-$version
 
-	make
+	LUA_DIR=/usr/include/luajit make
 	install -Dst $PKG/usr/lib lpeg.so
 	install -Dst $PKG/usr/lib/lua/5.4 lpeg.so
 	install -Dst $PKG/usr/lib/lua/5.2 lpeg.so
