@@ -11,9 +11,16 @@ source=(http://www.inf.puc-rio.br/~roberto/${name:4:7}/${name:4:7}-$version.tar.
 build() {
 	cd ${name:4:7}-$version
 
-	LUA_DIR=/usr/include/luajit make
+	make LUA_DIR=/usr/include/luajit lua=luajit
+
 	install -Dst $PKG/usr/lib lpeg.so
+
 	install -Dst $PKG/usr/lib/lua/5.4 lpeg.so
+	install -Dt $PKG/usr/share/lua/5.4 re.lua
+
 	install -Dst $PKG/usr/lib/lua/5.2 lpeg.so
+	install -Dt $PKG/usr/share/lua/5.2 re.lua
+
 	install -Dst $PKG/usr/lib/lua/5.1 lpeg.so
+	install -Dt $PKG/usr/share/lua/5.1 re.lua
 }
